@@ -21,6 +21,7 @@
   "homepage": "https://github.com/SwapThing/swapApp#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "react": "^16.12.0",
     "react-redux": "^7.2.0"
@@ -33,6 +34,7 @@
     "concurrently": "^5.1.0",
     "cross-env": "^7.0.0",
     "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
     "nodemon": "^2.0.2",
     "pg": "^7.18.1",
     "style-loader": "^1.1.3",
