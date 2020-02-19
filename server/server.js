@@ -3,14 +3,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const app = express();
-require('dotenv').config()
 const PORT = 3000;
-const fileUpload = require('express-fileupload')
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(fileUpload());
+
 app.get('*', (req, res) => {
   res.sendStatus(404);
 });
