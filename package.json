@@ -1,0 +1,19 @@
+{
+  "name": "swapapp",
+  "version": "1.0.0",
+  "description": "sustainable sapping beats sustainable shopping",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SwapThing/swapApp.git"
+  },
+  "author": "Dan Stein, Yoon Choi, Rachel Yoo, Kelly Dekitani, Jonah Lin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SwapThing/swapApp/issues"
+  },
+  "homepage": "https://github.com/SwapThing/swapApp#readme"
+}
