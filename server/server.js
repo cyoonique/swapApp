@@ -4,6 +4,8 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
+const cloudinary = require('cloudinary').v2;
+
 
 app.use(cors());
 app.use(bodyParser.json());
