@@ -19,19 +19,22 @@ app.use(formData.parse())
 
 //serve the stylesheet and the index.js
 
+//post to signup and add the user to the database
 
-//post request to add images 
-app.post('/uploadImage', itemController.addImage, 
-// itemController.getUserId, 
-// itemController.saveImage, 
-(req, res) =>{
-  res.status(200).json(res.locals.imgURL);
+
+//post request to add images to cloudinary and saving it to the database
+app.post('/uploadImage/:item_id', 
+          itemController.addImage, 
+          itemController.getUserId, 
+          itemController.saveImage, 
+          (req, res) =>{
+          res.status(200).json(res.locals.imageInfo);
 })
 
 //get request 
-app.get('/items', itemController.getItems, (req, res) =>{
-  res.status(200)
-})
+// app.get('/items', itemController.getItems, (req, res) =>{
+//   res.status(200)
+// })
 
 
 
