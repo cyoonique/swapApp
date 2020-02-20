@@ -1,51 +1,22 @@
 import React, { Component } from 'react';
-import {
-  GoogleLogin,
-  GoogleLogout,
-  useGoogleLogin,
-  useGoogleLogout
-} from 'react-google-login';
-import axios from 'axios';
 import { render } from 'react-dom';
+import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
 
-class loginPage extends Component {
+class LoginPage extends Component {
   constructor(props) {
     super(props);
   }
 
-  // onSignIn(googleUser) {
-  //   const profile = googleUser.getBasicProfile();
-  //   profile.getId(), profile.getName(), profile.getEmail();
-  //   return new Promise(resolve => {
-  //     let form = new FormData();
-  //     const idToken = googleUser.getAuthResponse().id_token;
-  //     if (!idToken) {
-  //       throw 'Authentication failed.';
-  //     }
-  //     form.append('id_token', idToken);
-  //     return fetch('/validate', {
-  //       method: 'POST',
-  //       body: form,
-  //       credntials: 'include'
-  //     }).then(resp => {
-  //       if (resp.status === 200) {
-  //         resolve(googleUser);
-  //       } else {
-  //         throw 'Authentication failed.';
-  //       }
-  //     });
-  //   });
-  // }
-
   render() {
     const responseGoogle = response => {
-      console.log(response);
-      const idToken = response.id_token;
+      const idToken = response.tokenId;
       axios.get('/validate', {
-        headers: 'Bearer',
-        idToken: idToken
+        tokenType: 'Bearer',
+        authorization: idToken
       });
     };
+
     return (
       <div className="loginPage">
         <h1 id="loginHeader">Welcome to SWAP!</h1>
@@ -62,4 +33,4 @@ class loginPage extends Component {
   }
 }
 
-export default loginPage;
+export default LoginPage;

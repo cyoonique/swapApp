@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions.js';
 
 import TopNavBar from '../components/topNavBar.jsx';
-import LoginPage from '../components/loginPage.jsx';
+import LoginPage from '../components/LoginPage.jsx';
 import Feed from '../components/Feed.jsx';
 
 const mapStateToProps = state => ({

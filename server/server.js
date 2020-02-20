@@ -5,8 +5,6 @@ const cors = require('cors');
 const app = express();
 const session = require('express-session');
 
-const qs = require('querystring');
-
 const randomString = require('randomstring');
 const userController = require('./controllers/userController');
 const itemController = require('./controllers/itemController');
@@ -20,9 +18,6 @@ const client = new OAuth2Client(
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-const csrfString = randomString.generate();
-const redirect_uri = 'http://localhost:3000/redirect';
 
 app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '../client/index.html');
@@ -38,20 +33,19 @@ app.get('/', (req, res, next) => {
 // );
 
 app.get('/validate', (req, res, next) => {
-  console.log(client);
   async function verify() {
     const ticket = await client.verifyIdToken({
-      idToken: token,
+      idToken: req.headers.authorization,
       audience:
         '382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com'
     });
     const payload = ticket.getPayload();
     const userId = payload['sub'];
+    console.log('payload', payload);
+    console.log('userId', userId);
   }
   verify().catch(console.error);
 });
-
-app.post('/validate', (req, res, next) => {});
 
 app.get('*', (req, res) => {
   res.sendStatus(404);
