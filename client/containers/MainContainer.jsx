@@ -31,10 +31,10 @@ class MainContainer extends Component {
           <div id="mainContainer">
             <div className="navBarContainer">
               <TopNavBar feedDisplayToggle={this.props.feedDisplayToggle} />
-              <LoginPage />
             </div>
             <div className="swapContainer">{swapContainer}</div>
           </div>
+          <LoginPage />
         </div>
       </div>
     );

@@ -14,7 +14,7 @@ const formData = require('express-form-data');
 
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(
-  '382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com'
+  '382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com'
 );
 
 app.use(cors());
@@ -33,25 +33,12 @@ app.post(
   }
 );
 
-app.get('/', (req, res, next) => {
-  res.sendFile(__dirname + '../client/index.html');
-});
-
-// app.use(
-//   session({
-//     secret: randomString.generate(),
-//     cookie: { maxAge: 6000 },
-//     resave: false,
-//     saveUnintialized: false
-//   })
-// );
-
 app.get('/validate', (req, res, next) => {
   async function verify() {
     const ticket = await client.verifyIdToken({
       idToken: req.headers.authorization,
       audience:
-        '382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com'
+        '382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com'
     });
     const payload = ticket.getPayload();
     const userId = payload['sub'];
@@ -59,6 +46,10 @@ app.get('/validate', (req, res, next) => {
     console.log('userId', userId);
   }
   verify().catch(console.error);
+});
+
+app.get('/', (req, res, next) => {
+  res.sendFile(__dirname + '../client/index.html');
 });
 
 app.get('*', (req, res) => {
