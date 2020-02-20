@@ -4,10 +4,26 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
+const cloudinary = require('cloudinary').v2;
+const formData = require('express-form-data')
+const itemController = require('./controllers/itemController');
+const userController = require('./controllers/userController')
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(formData.parse())
+
+
+//post request to add images to cloudinary and saving it to the database
+app.post('/uploadImage/:item_id', 
+          itemController.addImage, 
+          itemController.getUserId, 
+          itemController.saveImage, 
+          (req, res) =>{
+          res.status(200).json(res.locals.imageInfo);
+})
+
 
 // serve static file
 // app.get('/styles/style.css', (req,res) => {
