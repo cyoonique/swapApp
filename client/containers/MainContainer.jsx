@@ -9,6 +9,7 @@ import TopNavBar from "../components/topNavBar.jsx";
 import LoginPage from "../components/loginPage.jsx";
 import Feed from "../components/Feed.jsx";
 
+// import SwapContainer from "./SwapContainer.jsx";
 
 const mapStateToProps = state => ({
     //toggles for rendering based off of navBar
@@ -96,8 +97,7 @@ class MainContainer extends Component {
 
                 </div>
             </div>
-        )
-    }
-}
+        );
+    }}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
