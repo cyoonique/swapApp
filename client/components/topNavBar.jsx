@@ -6,7 +6,7 @@ const topNavBar = (props) => {
             <nav className="nav-wrapper grey darken-3">
             <div className="NavContainer">
                 <a className="brand-logo">SwapThing</a>
-                <ul className="right">
+                <ul className="navButton">
                     <li><a href="/feed">Feed</a></li>
                     <li><a href="/item">User Item</a></li>
                     <li><a href="/barter">Barter</a></li>

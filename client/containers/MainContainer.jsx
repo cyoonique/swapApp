@@ -61,6 +61,7 @@ class MainContainer extends Component {
                     </button> */}
 
                     <div className="navBarContainer">
+                    <img src="logo.jpg"></img>
                     <TopNavBar />
                     </div>
 
