@@ -29,9 +29,10 @@ const loginPage = props => {
 
         <p>
         <button className="signupButton" value="Sign-up!"
-                                    onClick={() =>  {
-                                                    props.signupDisplayToggle();
-                                                    }}
+                                    // onClick={() =>  {
+                                    //                 console.log(props.loginDisplayTog)
+                                    //                 props.loginDisplayToggle();
+                                    //                 }}
                                                     />  
                                                     </p>                                            
         </div>
