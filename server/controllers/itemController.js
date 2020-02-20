@@ -8,32 +8,24 @@ cloudinary.config({
   api_secret: 'QSaAUgEMAaUhC-Jl5q6oIqk9SYI' 
 });
 
-itemController.saveImage =  async (req, res, next) =>{
-  const {user_id, imgURL, item_id} = res.locals
-  const text = `INSERT INTO image (img_url, item_id, user_id)
-                VALUES ($1, $2, $3)
-                RETURNING *`
-  const values = [imgURL, item_id, user_id]
-  await db.query(text, values)
-  .then(response => {
-    // console.log(`this is the response in saveImage:`, response.rows[0])
-    res.locals.imageInfo = response.rows[0]
-    //this is what we send to the frontEnd
-      // {
-      //   "img_id": 9,
-      //   "item_id": 2,
-      //   "img_url": "{\"http://res.cloudinary.com/swapme/image/upload/v1582226766/n3z0uv55wqjrhjfcfrry.png\",\"http://res.cloudinary.com/swapme/image/upload/v1582226766/ea1zzn38u5t2xavuscsi.png\"}",
-      //   "user_id": 1
-      // }
-    return next();
-  })
-  .catch(err=>{
-    return next(err);
-  })
-
+//Adding the image to cloudinary 
+itemController.addImage = (req, res, next) => {
+  const values = Object.values(req.files)
+  const promises = values.map(image => cloudinary.uploader.upload(image.path))
+  Promise
+    .all(promises)
+    .then(results => {
+      //creating an array of urls
+      res.locals.imgURL = results.map(result => result.url)
+      next();
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
-//ANOTHER MIDDLEWARE TO GET THE USER_ID FROM THE ITEM TABLE 
+
+//getting the userId
 itemController.getUserId= (req,res, next) =>{
   const {item_id} = req.params;
   const text = `SELECT user_id FROM item i WHERE i.item_id = $1`
@@ -51,31 +43,31 @@ itemController.getUserId= (req,res, next) =>{
   })
 }
 
-//adding the image to cloudinary 
-itemController.addImage = (req, res, next) => {
-  // const image = req.files;
-  // console.log('image:', image)
-  // return next();
-  const values = Object.values(req.files)
-  // console.log(values)
-  const promises = values.map(image => cloudinary.uploader.upload(image.path))
-  Promise
-    .all(promises)
-    .then(results => {
-      // console.log('results' , results)
-      //array of urls
-      res.locals.imgURL = results.map(result => result.url)
-      next();
-    })
-    .catch(err => {
-      console.log(err);
-      })
+//saving the image and the item info in the db
+itemController.saveImage =  async (req, res, next) =>{
+  const {user_id, imgURL, item_id} = res.locals
+  const text = `INSERT INTO image (img_url, item_id, user_id)
+                VALUES ($1, $2, $3)
+                RETURNING *`
+  const values = [imgURL, item_id, user_id]
+  await db.query(text, values)
+  .then(response => {
+    res.locals.imageInfo = response.rows[0]
+    //this is what we send to the frontEnd
+      // {
+      //   "img_id": 9,
+      //   "item_id": 2,
+      //   "img_url": "{\"http://res.cloudinary.com/swapme/image/upload/v1582226766/n3z0uv55wqjrhjfcfrry.png\",\"http://res.cloudinary.com/swapme/image/upload/v1582226766/ea1zzn38u5t2xavuscsi.png\"}",
+      //   "user_id": 1
+      // }
+    return next();
+  })
+  .catch(err=>{
+    return next(err);
+  })
+
 }
 
-//getting all the items & their respective images 
-itemController.getItems = (req, res, next) => {
-  //send a url 
-}
 
 
 

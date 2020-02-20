@@ -6,7 +6,6 @@ const app = express();
 const PORT = 3000;
 const cloudinary = require('cloudinary').v2;
 const formData = require('express-form-data')
-// const fileupload = require('express-fileupload');
 const itemController = require('./controllers/itemController');
 const userController = require('./controllers/userController')
 
@@ -14,12 +13,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(formData.parse())
-// app.use(fileupload({useTempFiles:true}));
-
-
-//serve the stylesheet and the index.js
-
-//post to signup and add the user to the database
 
 
 //post request to add images to cloudinary and saving it to the database
@@ -30,12 +23,6 @@ app.post('/uploadImage/:item_id',
           (req, res) =>{
           res.status(200).json(res.locals.imageInfo);
 })
-
-//get request 
-// app.get('/items', itemController.getItems, (req, res) =>{
-//   res.status(200)
-// })
-
 
 
 app.get('*', (req, res) => {
