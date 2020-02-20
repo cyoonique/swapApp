@@ -3,7 +3,7 @@ import * as types from '../actions/actionTypes';
 const initialState = { 
     loginDisplayTog: true,
     signupDisplayTog: false,
-    swapDisplayTog: false,
+    feedDisplayTog: false,
     barterDisplayTog: false,
     itemsDisplayTog: false
 }
@@ -29,7 +29,16 @@ const renderingReducer = ( state = initialState, action) => {
             }
         }
 
-        
+        case types.FEED_DISPLAY_TOGGLE: {
+            let {feedDisplayTog} = state;
+            feedDisplayTog = !feedDisplayTog;
+            return {
+                ...state,
+                feedDisplayTog,
+            }
+        }
+
+
         default: 
             return state;
     }

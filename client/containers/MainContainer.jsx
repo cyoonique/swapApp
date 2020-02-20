@@ -5,8 +5,7 @@ import * as actions from "../actions/actions.js";
 
 import TopNavBar from "../components/topNavBar.jsx";
 import LoginPage from "../components/loginPage.jsx";
-
-// import SwapContainer from "./SwapContainer.jsx";
+import Feed from "../components/Feed.jsx";
 
 
 const mapStateToProps = state => ({
@@ -24,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
 class MainContainer extends Component {
     render(props) {
 
+        //below is the conditional rendering logic for the login page
         let loginPage;
         if (this.props.loginDisplayTog === true) {
             loginPage = (
@@ -34,6 +34,9 @@ class MainContainer extends Component {
                      />
             )
         }
+
+        let swapContainer;
+
         return (
             <main>
 
@@ -49,9 +52,14 @@ class MainContainer extends Component {
                     test me!
                     </button> */}
 
-                    
+                    <div className="navBarContainer">
                     <TopNavBar />
-                    {/* <SwapContainer /> */}
+                    </div>
+
+                    <div className="swapContainer">
+                    {swapContainer}
+                    </div>
+
                 </div>
             </main>
         )
