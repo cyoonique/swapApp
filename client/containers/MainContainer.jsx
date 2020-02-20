@@ -46,7 +46,7 @@ class MainContainer extends Component {
                     test me!
                     </button> */}
 
-                    
+                    <img src="logo.jpg"></img>
                     <TopNavBar />
                     {/* <SwapContainer /> */}
                 </div>
