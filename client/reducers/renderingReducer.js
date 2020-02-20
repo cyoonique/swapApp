@@ -84,6 +84,7 @@ const renderingReducer = ( state = initialState, action) => {
             feedDisplayTog = false;
             return {
                 ...state,
+                barterDisplayTog,
                 userItemsDisplayTog,
                 addListingTog,
                 feedDisplayTog,
