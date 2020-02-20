@@ -9,15 +9,27 @@ body {
     background: rgb(250, 250, 250);
 }
 
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+}
+
 .loginPage {
+    width: 100%;
+    height: 100%;
     border: 3px solid #f1f1f1;
     display: flex;
     justify-content: center;
-    padding-top: 40px;
     color: #8C55AA;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 23px;
+    z-index: 1;
+    background: pink;
 }
 
 .NavContainer {
@@ -25,13 +37,11 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 100%;
     background: lightblue;
     padding: 10px;
     overflow: auto;
     padding: 5px 5px;
-    position: fixed;
-    top: 0;
-    width: 100%;
 }
 
 nav ul {
@@ -61,17 +71,21 @@ nav a{
 }
 
 .mainContainer {
-    /* using flexbox to change boxes from verical to horizontal */
-    /* display: flex;
-    flex-direction: column; */
+    width: 100%;
+    height: 100%;
     display: grid;
-    max-width: 1200px;
     margin: auto;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: auto;
+    grid-template-columns: auto;
+    grid-auto-rows: 8% 92%;
     grid-gap: 1rem;
     
 }
+    .navBarContainer {
+        grid-row: 1;
+        width: 100%;
+        height: 100%;
+    }
+
 .itemCard {
   background-color:white;
   border: 1px solid rgb(0, 0, 0);

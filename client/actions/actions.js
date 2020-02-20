@@ -7,3 +7,7 @@ export const loginDisplayToggle = () => ({
 export const signupDisplayToggle = () => ({
     type: types.SIGNUP_DISPLAY_TOGGLE,
 });
+
+export const feedDisplayToggle = () => ({
+    type: types.FEED_DISPLAY_TOGGLE,
+});
