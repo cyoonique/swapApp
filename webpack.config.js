@@ -18,7 +18,12 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'build'),
         hot: true,
         publicPath: '/',
-        inline: true
+        inline: true,
+
+        // contentBase: './client/',
+        // open: true,
+        // port: 3000,
+        // overlay: true
     },
     module: {
         rules: [
@@ -27,6 +32,7 @@ module.exports = {
             exclude: /node_modules/,
             use: {
               loader: 'babel-loader',
+              
             },
           },
           {
@@ -43,6 +49,7 @@ module.exports = {
       plugins: [
         new HtmlWebpackPlugin({
           template: 'client/index.html',
+          output: './build/index.html'
         }),
       ],
       resolve: {

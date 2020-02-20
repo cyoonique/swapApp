@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import Main from './containers/MainContainer.jsx';
-import './containers/LogInContainer.jsx';
+import MainContainer from './containers/MainContainer.jsx';
+import LogInContainer from './containers/LogInContainer.jsx';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div>
-        <Main />
+      <div id="App">
+        <MainContainer />
         <LogInContainer />
       </div>
     );
