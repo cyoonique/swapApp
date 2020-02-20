@@ -2,6 +2,19 @@ const db = require('../models/SwapModel');
 const userController = {};
 
 // find and validate user; check if user already exists in database
+userController.verifyUser = (req, res, next) => {
+  async function verify() {
+    const ticket = await client.verifyIdToken({
+      idToken: req.headers.authorization,
+      audience:
+        '382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com'
+    });
+    const payload = ticket.getPayload();
+    const userId = payload['sub'];
+    next();
+  }
+  verify().catch(console.error);
+};
 
 //add user
 userController.createUser = (req, res, next) => {

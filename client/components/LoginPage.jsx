@@ -10,9 +10,7 @@ class LoginPage extends Component {
 
   render() {
     const responseGoogle = response => {
-      console.log(response);
       const idToken = response.tokenId;
-      console.log('token here', idToken);
       axios.get('/validate', {
         headers: {
           tokenType: 'Bearer',

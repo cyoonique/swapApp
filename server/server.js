@@ -33,19 +33,8 @@ app.post(
   }
 );
 
-app.get('/validate', (req, res, next) => {
-  async function verify() {
-    const ticket = await client.verifyIdToken({
-      idToken: req.headers.authorization,
-      audience:
-        '382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com'
-    });
-    const payload = ticket.getPayload();
-    const userId = payload['sub'];
-    console.log('payload', payload);
-    console.log('userId', userId);
-  }
-  verify().catch(console.error);
+app.get('/validate', userController.verifyUser, (req, res, next) => {
+  res.status(200);
 });
 
 app.get('/', (req, res, next) => {
