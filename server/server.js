@@ -4,9 +4,9 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 const session = require('express-session');
-const request = require('request');
+
 const qs = require('querystring');
-const url = require('url');
+
 const randomString = require('randomstring');
 const userController = require('./controllers/userController');
 const itemController = require('./controllers/itemController');

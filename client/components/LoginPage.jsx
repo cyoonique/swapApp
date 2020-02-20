@@ -7,7 +7,6 @@ import {
 } from 'react-google-login';
 import axios from 'axios';
 import { render } from 'react-dom';
-import { ResolvePlugin } from 'webpack';
 
 class loginPage extends Component {
   constructor(props) {

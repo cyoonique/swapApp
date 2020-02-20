@@ -21,18 +21,6 @@ const mapDispatchToProps = dispatch => ({
 
 class MainContainer extends Component {
   render(props) {
-    //below is the conditional rendering logic for the login page
-    // let loginPage;
-    // if (this.props.loginDisplayTog === true) {
-    //     loginPage = (
-    //         <div className="loginPage"><LoginPage
-    //                 loginDisplayToggle={this.props.loginDisplayToggle}
-    //                 loginDisplayTog={this.props.loginDisplayTog}
-    //                 signupDisplayToggle={this.props.signupDisplayToggle}
-    //              />
-    //              </div>
-    //     )
-    // }
     //conditionally rendering swapContainer to show feed upon logging in, but not when you click on any other link in navbar
     let swapContainer;
     if (this.props.feedDisplayTog === true) {
@@ -41,17 +29,7 @@ class MainContainer extends Component {
 
     return (
       <div className="fullscreen">
-        {loginPage}
-
         <div className="mainContainer">
-          {/* <button id="test" onClick={() => { 
-                        console.log('I got clicked') 
-                        this.props.loginDisplayToggle();
-                        console.log(this.props.loginDisplayTog);
-                        }} > 
-                    test me!
-                    </button> */}
-
           <div className="navBarContainer">
             <TopNavBar feedDisplayToggle={this.props.feedDisplayToggle} />
           </div>
