@@ -12,22 +12,36 @@ class LoginPage extends Component {
     const responseGoogle = response => {
       const idToken = response.tokenId;
       axios.get('/validate', {
-        tokenType: 'Bearer',
-        authorization: idToken
+        headers: {
+          tokenType: 'Bearer',
+          authorization: idToken
+        }
       });
     };
 
     return (
-      <div className="loginPage">
-        <h1 id="loginHeader">Welcome to SWAP!</h1>
+      <div className="loginBox">
+
+        <h1 className="loginWelcome">S W A P</h1>
+
+            <div className="loginText1"> 
+                <i> Charter your next barter with eaze </i>
+                </div>
+
+            <div className="loginText2">
+                ↠ Click below to sign in or create an account with Google™ 
+            </div>
+
         <GoogleLogin
-          clientId="382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com"
+          className="googleLogin"
+          clientId="382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com"
           buttonText="Sign in with Google"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           cookiePolicy={'single_host_origin'}
           fetchBasicProfile="true"
         />
+
       </div>
     );
   }
