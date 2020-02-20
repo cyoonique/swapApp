@@ -8,8 +8,8 @@ const request = require('request');
 const qs = require('querystring');
 const url = require('url');
 const randomString = require('randomstring');
-const userController = require('../controllers/userController');
-const itemController = require('../controllers/itemController');
+const userController = require('./controllers/userController');
+const itemController = require('./controllers/itemController');
 const PORT = 3000;
 
 const { OAuth2Client } = require('google-auth-library');
