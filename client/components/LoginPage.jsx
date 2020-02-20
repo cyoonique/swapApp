@@ -20,9 +20,20 @@ class LoginPage extends Component {
     };
 
     return (
-      <div className="loginPage">
-        <h1 id="loginHeader">Welcome to SWAP!</h1>
+      <div className="loginBox">
+
+        <h1 className="loginWelcome">S W A P</h1>
+
+            <div className="loginText1"> 
+                <i> Charter your next barter with eaze </i>
+                </div>
+
+            <div className="loginText2">
+                ↠ Click below to sign in or create an account with Google™ 
+            </div>
+
         <GoogleLogin
+          className="googleLogin"
           clientId="382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com"
           buttonText="Sign in with Google"
           onSuccess={responseGoogle}
@@ -30,6 +41,7 @@ class LoginPage extends Component {
           cookiePolicy={'single_host_origin'}
           fetchBasicProfile="true"
         />
+
       </div>
     );
   }

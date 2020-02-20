@@ -6,7 +6,11 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
     color: #393939;
-    background: rgb(192, 255, 234);
+    background: white;
+}
+
+i {
+    font-size: smaller;
 }
 
 /* LOG IN PAGE */
@@ -25,13 +29,13 @@ body {
     border: 3px solid #f1f1f1;
     display: grid;
     justify-content: center;
-    color: #8C55AA;
+    color: #393939;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 20px;
     z-index: 1;
-    background: pink;
-    grid-template-columns: 33% 33% 33%;
+    background: whitesmoke;
+    grid-template-columns: 40% 30% 30%;
     grid-template-rows: 20% 50% 30%;
 }
   
@@ -42,23 +46,49 @@ body {
         grid-row: 2;
         display: grid;
         grid-template-columns: auto;
-        grid-template-rows: 80% 20%;
+        grid-template-rows: 40% 15% 15% 20%;
     }
-        .loginInputSection {
+        .loginWelcome {
             grid-row: 1;
             height: 100%;
             width: 100%;
+            color: rgb(148, 235, 209);
         }
-        .sign-in input[type=text], .sign-in input[type=password] {
+            .loginText1 {
+                grid-row: 2;
+                text-align: center;
+                font-family: "Poppins", sans-serif;
+                color: #393939;
+            }
+            .loginText2 {
+                grid-row: 3;
+                text-align: center;
+                font-family: "Poppins", sans-serif;
+                color: #393939;
+            }
+
+        .googleLogin {
+            grid-row: 4;
+            height: 50%;
+            width: 100%;
+        }
+        h1.loginWelcome {
+            font-size: 90px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 0.25;
+            font-family: "Poppins", sans-serif;
+        }
+        /* .sign-in input[type=text], .sign-in input[type=password] {
             width: 278px;
             display: grid;
             justify-content: center;
-        }
-        .sign-in input[type=text]:hover, .sign-in input[type=password]:hover  {
+        } */
+        /* .sign-in input[type=text]:hover, .sign-in input[type=password]:hover  {
             background-color: rgb(192, 255, 234);
-          }
+          } */
 
-        input,
+        /* input,
         .btn {
             width: 300px;
             padding: 10px;
@@ -71,7 +101,7 @@ body {
             display: inline-block;
             font-size: 17px;
             line-height: 20px;
-            text-decoration: none; /* remove underline from anchors */
+            text-decoration: none; 
             
         }
         input[type=submit]:hover {
@@ -101,20 +131,21 @@ body {
             display: inline-block;
             font-size: 17px;
             line-height: 20px;
-            text-decoration: none;  /* remove underline from anchors */
+            text-decoration: none;  
         }
         .signupButton:hover {
             background-color: rgb(192, 255, 234);
-          }
+          } */
 
 /* NAV BAR STYLE */
 .NavContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "Poppins", sans-serif;
   width: 100%;
   height: 100%;
-  background: lightblue;
+  background: rgb(227, 253, 245);
   padding: 10px;
   overflow: auto;
   padding: 5px 5px;
@@ -125,6 +156,7 @@ nav ul {
   margin: 0px;
   padding: 20px;
   list-style: none;
+  font-family: "Poppins", sans-serif;
 }
 
 nav li {
@@ -136,6 +168,7 @@ nav li {
   letter-spacing: 2px;
   margin: 0;
   padding: 20px 3px 3px 15px;
+  font-family: "Poppins", sans-serif;
 }
 
 nav a {
@@ -144,6 +177,7 @@ nav a {
   padding-left: 10px;
   text-decoration: none;
   text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
 }
 
 /* MAIN CONTAINER */
@@ -168,32 +202,36 @@ nav a {
     }
 
 .feedContainer {
-    width: 100%;
+    grid-row: 2;
+    padding-left: 0.25%;
+    width: 99.75%;
     height: 100%;
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
-    grid-template-rows: 33.33% 33.33% 33.33%;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    grid-gap: 0.3%;
 }
-    .withinFeedContainer {
-        grid-column: 3;
-        grid-row: 3;
+    .feedItem {
+        width: 100%;
+        height: 100%;
+        border: 1px solid whitesmoke;
+        border-radius: 7px;
+        /* box-shadow: 1px 1px 1px; */
     }
 
 .userItemsContainer {
-    width: 100%;
+    padding-left: 0.25%;
+    width: 99.75%;
     height: 100%;
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
-    grid-template-rows: 33.33% 33.33% 33.33%;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    grid-gap: 0.3%;
 }
 
-.itemCard {
-  background-color:white;
-  border: 1px solid rgb(0, 0, 0);
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding: 10px;
-  box-shadow: 5px 5px 5px;
-}
+    .userItem {
+        width: 100%;
+        height: 100%;
+        border: 1px solid whitesmoke;
+        border-radius: 7px;
+    }

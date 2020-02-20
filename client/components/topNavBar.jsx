@@ -5,7 +5,7 @@ const TopNavBar = (props) => {
         <div>
             <nav className="NavContainer">
 
-                <a className="brand-logo">SwapThing</a>
+                <a className="brand-logo">S W A P ↠</a>
                 
                 <ul className="navButton">
 
