@@ -2,7 +2,8 @@ import * as types from '../actions/actionTypes';
 
 const initialState = { 
     loginDisplayTog: true,
-    swapDisplayTog: false,
+    signupDisplayTog: false,
+    feedDisplayTog: true, 
     barterDisplayTog: false,
     itemsDisplayTog: false
 }
@@ -18,6 +19,25 @@ const renderingReducer = ( state = initialState, action) => {
                 loginDisplayTog,
             }
         }
+
+        case types.SIGNUP_DISPLAY_TOGGLE: {
+            let {signupDisplayTog} = state;
+            signupDisplayTog = !signupDisplayTog;
+            return {
+                ...state,
+                signupDisplayTog,
+            }
+        }
+
+        case types.FEED_DISPLAY_TOGGLE: {
+            let {feedDisplayTog} = state;
+            feedDisplayTog = !feedDisplayTog;
+            return {
+                ...state,
+                feedDisplayTog,
+            }
+        }
+
 
         default: 
             return state;
