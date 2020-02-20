@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import Main from './containers/MainContainer.jsx';
+import MainContainer from './containers/MainContainer.jsx';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
-    return(
-      <div>
-        <Main/>
+    return (
+      <div id="App">
+          <MainContainer />
       </div>
     )
   }
