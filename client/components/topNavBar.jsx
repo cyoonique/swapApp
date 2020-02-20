@@ -9,12 +9,17 @@ const TopNavBar = (props) => {
                 
                 <ul className="navButton">
 
-                    <li><a href="/feed">Feed</a></li>
+                    <li><a onClick={() => {
+                                    props.feedDisplayToggle()
+                                    props.addListingToggle()
+                                    }}>Add Listing</a></li>
 
-                    <li><a onClick={() => {props.feedDisplayToggle()}}>User Item</a></li>
+                    <li><a onClick={() => {props.feedDisplayToggle()}}>Feed</a></li>
 
-                    <li><a href="/barter">Barter</a></li>
-                    
+                    <li><a onClick={() => {props.userItemsDisplayToggle()}}>User Item</a></li>
+
+                    <li><a onClick={() => {props.barterDisplayToggle()}}>Barter</a></li>
+
                     <li><a href="/upload">Upload</a></li>
 
                 </ul>

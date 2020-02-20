@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions/actions.js";
 
-
+import Barter from "../components/Barter.jsx";
+import UserItems from "../components/UserItems.jsx";
+import AddListing from "../components/AddListing.jsx";
 import TopNavBar from "../components/topNavBar.jsx";
 import LoginPage from "../components/loginPage.jsx";
 import Feed from "../components/Feed.jsx";
@@ -13,13 +15,18 @@ const mapStateToProps = state => ({
     loginDisplayTog: state.rendering.loginDisplayTog,
     signupDisplayTog: state.rendering.signupDisplayTog,
     feedDisplayTog: state.rendering.feedDisplayTog,
+    addListingTog: state.rendering.addListingTog,
+    userItemsDisplayTog: state.rendering.userItemsDisplayTog,
+    barterDisplayTog: state.rendering.barterDisplayTog,
 });
 
 const mapDispatchToProps = dispatch => ({
     loginDisplayToggle: () => dispatch(actions.loginDisplayToggle()),
     signupDisplayToggle: () => dispatch(actions.signupDisplayToggle()),
     feedDisplayToggle: () => dispatch(actions.feedDisplayToggle()),
-
+    addListingToggle: () => dispatch(actions.addListingToggle()),
+    userItemsDisplayToggle: () => dispatch(actions.userItemsDisplayToggle()),
+    barterDisplayToggle: () => dispatch(actions.barterDisplayToggle()),
 });
 
 class MainContainer extends Component {
@@ -44,6 +51,18 @@ class MainContainer extends Component {
             swapContainer = (
                 <Feed/>
             )
+        } else if (this.props.addListingTog === true) {
+            swapContainer = (
+                <AddListing/>
+            )
+        } else if (this.props.userItemsDisplayTog === true) {
+            swapContainer = (
+                <UserItems/>
+            )
+        } else if (this.props.barterDisplayTog === true) {
+            swapContainer = (
+                <Barter/>
+            )
         }
 
         return (
@@ -65,6 +84,9 @@ class MainContainer extends Component {
                     <div className="navBarContainer">
                         <TopNavBar 
                             feedDisplayToggle={this.props.feedDisplayToggle}
+                            addListingToggle={this.props.addListingToggle}
+                            userItemsDisplayToggle={this.props.userItemsDisplayToggle}
+                            barterDisplayToggle={this.props.barterDisplayToggle}
                         />
                     </div>
 
