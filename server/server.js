@@ -9,6 +9,10 @@ const randomString = require('randomstring');
 const userController = require('./controllers/userController');
 const itemController = require('./controllers/itemController');
 const PORT = 3000;
+const cloudinary = require('cloudinary').v2;
+const formData = require('express-form-data')
+const itemController = require('./controllers/itemController');
+const userController = require('./controllers/userController')
 
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(
@@ -18,6 +22,18 @@ const client = new OAuth2Client(
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(formData.parse())
+
+
+//post request to add images to cloudinary and saving it to the database
+app.post('/uploadImage/:item_id', 
+          itemController.addImage, 
+          itemController.getUserId, 
+          itemController.saveImage, 
+          (req, res) =>{
+          res.status(200).json(res.locals.imageInfo);
+})
+
 
 app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '../client/index.html');

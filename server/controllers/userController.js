@@ -1,6 +1,9 @@
 const db = require('../models/SwapModel');
 const userController = {};
 
-userController.createUser = (req, res, next) => {};
+//add user 
+
+//get user history
+
 
 module.exports = userController;
