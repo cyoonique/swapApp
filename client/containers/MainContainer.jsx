@@ -7,34 +7,33 @@ import TopNavBar from "../components/topNavBar.jsx";
 import LoginPage from "../components/loginPage.jsx";
 import Feed from "../components/Feed.jsx";
 
+// import SwapContainer from "./SwapContainer.jsx";
+
 
 const mapStateToProps = state => ({
     //toggles for rendering based off of navBar
     loginDisplayTog: state.rendering.loginDisplayTog,
-    signupDisplayTog: state.rendering.signupDisplayTog,
     feedDisplayTog: state.rendering.feedDisplayTog,
+
 });
 
 const mapDispatchToProps = dispatch => ({
     loginDisplayToggle: () => dispatch(actions.loginDisplayToggle()),
-    signupDisplayToggle: () => dispatch(actions.signupDisplayToggle()),
     feedDisplayToggle: () => dispatch(actions.feedDisplayToggle()),
 
 });
 
 class MainContainer extends Component {
     render(props) {
-
-        //below is the conditional rendering logic for the login page
+         //below is the conditional rendering logic for the login page
         let loginPage;
         if (this.props.loginDisplayTog === true) {
             loginPage = (
                 <div className="loginPage"><LoginPage
                         loginDisplayToggle={this.props.loginDisplayToggle}
                         loginDisplayTog={this.props.loginDisplayTog}
-                        signupDisplayToggle={this.props.signupDisplayToggle}
                      />
-                     </div>
+                </div>
             )
         }
 
@@ -45,7 +44,6 @@ class MainContainer extends Component {
                 <Feed/>
             )
         }
-
         return (
             <div className="fullscreen">
 
@@ -54,6 +52,9 @@ class MainContainer extends Component {
                 <div className="mainContainer">
 
 
+                <div id="mainContainer">
+             
+
                     {/* <button id="test" onClick={() => { 
                         console.log('I got clicked') 
                         this.props.loginDisplayToggle();
@@ -61,7 +62,6 @@ class MainContainer extends Component {
                         }} > 
                     test me!
                     </button> */}
-
                     <div className="navBarContainer">
                         <TopNavBar 
                             feedDisplayToggle={this.props.feedDisplayToggle}
@@ -74,6 +74,7 @@ class MainContainer extends Component {
 
                 </div>
             </div>
+        </div>
         )
     }
 }
