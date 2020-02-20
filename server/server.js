@@ -14,6 +14,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(formData.parse())
 
+app.get('/feed', itemController.feed, (req, res) =>{
+  res.status(200).json(res.locals.feed);
+})
+
 
 //post request to add images to cloudinary and saving it to the database
 app.post('/uploadImage/:item_id', 
