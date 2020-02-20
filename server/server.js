@@ -12,11 +12,6 @@ const PORT = 3000;
 const cloudinary = require('cloudinary').v2;
 const formData = require('express-form-data');
 
-const { OAuth2Client } = require('google-auth-library');
-const client = new OAuth2Client(
-  '382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com'
-);
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,32 +28,12 @@ app.post(
   }
 );
 
-app.get('/', (req, res, next) => {
-  res.sendFile(__dirname + '../client/index.html');
+app.get('/validate', userController.verifyUser, (req, res, next) => {
+  res.status(200);
 });
 
-// app.use(
-//   session({
-//     secret: randomString.generate(),
-//     cookie: { maxAge: 6000 },
-//     resave: false,
-//     saveUnintialized: false
-//   })
-// );
-
-app.get('/validate', (req, res, next) => {
-  async function verify() {
-    const ticket = await client.verifyIdToken({
-      idToken: req.headers.authorization,
-      audience:
-        '382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com'
-    });
-    const payload = ticket.getPayload();
-    const userId = payload['sub'];
-    console.log('payload', payload);
-    console.log('userId', userId);
-  }
-  verify().catch(console.error);
+app.get('/', (req, res, next) => {
+  res.sendFile(__dirname + '../client/index.html');
 });
 
 app.get('*', (req, res) => {
