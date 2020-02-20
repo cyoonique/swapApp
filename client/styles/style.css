@@ -107,6 +107,18 @@ nav a{
         height: 100%;
     }
 
+.feedContainer {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 33.33% 33.33% 33.33%;
+}
+    .withinFeedContainer {
+        grid-column: 3;
+        grid-row: 3;
+    }
+
 .itemCard {
   background-color:white;
   border: 1px solid rgb(0, 0, 0);
