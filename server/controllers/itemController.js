@@ -9,7 +9,7 @@ cloudinary.config({
   api_secret: 'QSaAUgEMAaUhC-Jl5q6oIqk9SYI' 
 });
 
-
+//getting the feed 
 itemController.feed = (req, res, next) =>{
   //items => pull down item information -> array of imgurl
   const text = `SELECT * FROM image`;
@@ -28,6 +28,23 @@ itemController.feed = (req, res, next) =>{
     return next(err);
   })
 }
+
+//adding a new item
+itemController.addListing = (req, res, next) => {
+  const {user_id} = req.params;
+  const {description, category, est_value, condition, available, item_name} = req.body;
+  const text = `INSERT INTO item (description, category, est_value, condition, available, item_name, user_id)
+                VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
+  const values = [ description, category, est_value, condition, available, item_name, user_id];
+  db.query(text, values)
+    .then (resp => {
+      // console.log(resp)
+      return next()
+    })
+    .catch(err => console.log(err))
+}
+
+
 
 //Adding the image to cloudinary 
 itemController.addImage = (req, res, next) => {
@@ -85,21 +102,7 @@ itemController.saveImage =  async (req, res, next) =>{
       "img_url": response.rows[0].img_url.slice(2,-2).split('\"\,"'),
       "user_id": response.rows[0].user_id
     }]
-    // console.log(res.locals.imageInfo);
-    // res.locals.imageInfo = [{
-      // img_id: ,
-      // item_id: ,
-      // img_url: res.locals.imageInfo.img_url.slice(2,-2),
-      // user_id: ,
-  // },]
-    // console.log('res.locals.imageinffrp', res.locals.imageInfo.img_url.slice(2,-2).split('\"\,"'))
-    //this is what we send to the frontEnd
-      // {
-      //   "img_id": 9,
-      //   "item_id": 2,
-      //   "img_url": "{\"http://res.cloudinary.com/swapme/image/upload/v1582226766/n3z0uv55wqjrhjfcfrry.png\",\"http://res.cloudinary.com/swapme/image/upload/v1582226766/ea1zzn38u5t2xavuscsi.png\"}",
-      //   "user_id": 1
-      // }
+   
     return next();
   })
   .catch(err=>{
