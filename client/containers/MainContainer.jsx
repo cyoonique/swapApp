@@ -12,10 +12,12 @@ import LoginPage from "../components/loginPage.jsx";
 const mapStateToProps = state => ({
     //toggles for rendering based off of navBar
     loginDisplayTog: state.rendering.loginDisplayTog,
+    signupDisplayTog: state.rendering.signupDisplayTog,
 });
 
 const mapDispatchToProps = dispatch => ({
     loginDisplayToggle: () => dispatch(actions.loginDisplayToggle()),
+    signupDisplayToggle: () => dispatch(actions.signupDisplayToggle()),
 
 });
 
@@ -28,6 +30,7 @@ class MainContainer extends Component {
                 <LoginPage
                         loginDisplayToggle={this.props.loginDisplayToggle}
                         loginDisplayTog={this.props.loginDisplayTog}
+                        signupDisplayToggle={this.props.signupDisplayToggle}
                      />
             )
         }
