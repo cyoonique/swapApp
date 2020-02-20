@@ -18,6 +18,13 @@ itemController.saveImage =  async (req, res, next) =>{
   .then(response => {
     // console.log(`this is the response in saveImage:`, response.rows[0])
     res.locals.imageInfo = response.rows[0]
+    //this is what we send to the frontEnd
+      // {
+      //   "img_id": 9,
+      //   "item_id": 2,
+      //   "img_url": "{\"http://res.cloudinary.com/swapme/image/upload/v1582226766/n3z0uv55wqjrhjfcfrry.png\",\"http://res.cloudinary.com/swapme/image/upload/v1582226766/ea1zzn38u5t2xavuscsi.png\"}",
+      //   "user_id": 1
+      // }
     return next();
   })
   .catch(err=>{
@@ -55,9 +62,9 @@ itemController.addImage = (req, res, next) => {
   Promise
     .all(promises)
     .then(results => {
-      console.log('results url' , results[0].url)
+      // console.log('results' , results)
       //array of urls
-      res.locals.imgURL = results[0].url 
+      res.locals.imgURL = results.map(result => result.url)
       next();
     })
     .catch(err => {
