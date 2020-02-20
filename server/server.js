@@ -25,6 +25,11 @@ app.post('/uploadImage/:item_id',
 })
 
 
+// serve static file
+// app.get('/styles/style.css', (req,res) => {
+//   res.status(200).sendFile(path.join(__dirname, `../client/styles/style.css`));
+// })  
+
 app.get('*', (req, res) => {
   res.sendStatus(404);
 });
