@@ -29,15 +29,16 @@ class MainContainer extends Component {
         let loginPage;
         if (this.props.loginDisplayTog === true) {
             loginPage = (
-                <LoginPage
+                <div className="loginPage"><LoginPage
                         loginDisplayToggle={this.props.loginDisplayToggle}
                         loginDisplayTog={this.props.loginDisplayTog}
                         signupDisplayToggle={this.props.signupDisplayToggle}
-                        feedDisplayToggle={this.props.feedDisplayToggle}
                      />
+                     </div>
             )
         }
 
+        //conditionally rendering swapContainer to show feed upon logging in, but not when you click on any other link in navbar
         let swapContainer;
         if (this.props.feedDisplayTog === true) {
             swapContainer = (
@@ -46,10 +47,11 @@ class MainContainer extends Component {
         }
 
         return (
-            <main>
+            <div className="fullscreen">
 
-                <div id="mainContainer">
-                    <div className="loginPage"> {loginPage} </div>
+                {loginPage} 
+
+                <div className="mainContainer">
 
 
                     {/* <button id="test" onClick={() => { 
@@ -61,8 +63,9 @@ class MainContainer extends Component {
                     </button> */}
 
                     <div className="navBarContainer">
-                    <img src="logo.jpg"></img>
-                    <TopNavBar />
+                        <TopNavBar 
+                            feedDisplayToggle={this.props.feedDisplayToggle}
+                        />
                     </div>
 
                     <div className="swapContainer">
@@ -70,7 +73,7 @@ class MainContainer extends Component {
                     </div>
 
                 </div>
-            </main>
+            </div>
         )
     }
 }
