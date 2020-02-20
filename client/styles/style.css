@@ -1,14 +1,40 @@
-* {
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    display: flex;
     color: #393939;
-    background-color: lightblue;
+    background-color: rgb(250, 250, 250);
 }
 
-.appContainer {
+.NavContainer {
+    display: flex;
+    box-sizing: border-box;
+    background-color: rgb(18, 161, 172);
+    overflow: auto;
+    padding: 5px 5px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    color: #FFF;
+    display: inline-block;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 20px 3px 3px 15px;
+}
+.mainContainer {
     /* using flexbox to change boxes from verical to horizontal */
     /* display: flex;
     flex-direction: column; */
@@ -19,7 +45,6 @@
     grid-auto-rows: auto;
     grid-gap: 1rem;
 }
-
 .itemCard {
   background-color:white;
   border: 1px solid rgb(0, 0, 0);
