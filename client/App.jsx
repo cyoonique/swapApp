@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Main from './containers/MainContainer.jsx';
+import './containers/LogInContainer.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -7,11 +8,12 @@ class App extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
-        <Main/>
+        <Main />
+        <LogInContainer />
       </div>
-    )
+    );
   }
 }
 

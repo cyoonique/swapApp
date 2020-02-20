@@ -23,27 +23,27 @@ app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '../client/index.html');
 });
 
-app.use(
-  session({
-    secret: randomString.generate(),
-    cookie: { maxAge: 6000 },
-    resave: false,
-    saveUnintialized: false
-  })
-);
+// app.use(
+//   session({
+//     secret: randomString.generate(),
+//     cookie: { maxAge: 6000 },
+//     resave: false,
+//     saveUnintialized: false
+//   })
+// );
 
-app.get('/login', (req, res, next) => {
-  req.session.csrf_string = randomString.generate();
-  const githubAuthUrl =
-    'https://github.com/login/oauth/authorize?' +
-    qs.stringify({
-      client_id: 'dd3d4118d5914db565a2',
-      redirect_uri: redirect_uri,
-      state: req.session.csrf_string,
-      scope: 'user:email'
-    });
-  res.redirect(githubAuthUrl);
-});
+// app.get('/login', (req, res, next) => {
+//   req.session.csrf_string = randomString.generate();
+//   const githubAuthUrl =
+//     'https://github.com/login/oauth/authorize?' +
+//     qs.stringify({
+//       client_id: 'dd3d4118d5914db565a2',
+//       redirect_uri: redirect_uri,
+//       state: req.session.csrf_string,
+//       scope: 'user:email'
+//     });
+//   res.redirect(githubAuthUrl);
+// });
 
 app.get('*', (req, res) => {
   res.sendStatus(404);
