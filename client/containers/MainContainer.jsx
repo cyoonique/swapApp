@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions/actions.js";
 
-import topNavBar from "../components/topNavBar.jsx";
+import TopNavBar from "../components/topNavBar.jsx";
 // import SwapContainer from "./SwapContainer.jsx";
 
 
@@ -20,7 +20,7 @@ class MainContainer extends Component {
     render(props) {
         return (
             <main>
-                <div id="main">
+                <div id="mainContainer">
 
                     <button id="test" onClick={() => { 
                         console.log('I got clicked') 
@@ -31,7 +31,7 @@ class MainContainer extends Component {
                     </button>
 
                     
-                    <topNavBar />
+                    <TopNavBar />
                     {/* <SwapContainer /> */}
                 </div>
             </main>

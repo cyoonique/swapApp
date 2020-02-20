@@ -1,18 +1,5 @@
 import { combineReducers } from 'redux';
 
-<<<<<<< HEAD
-// import all reducers here
-import swapReducer from './swapReducer';
-
-
-// combine reducers
-const reducers = combineReducers({
-  // if we had other reducers, they would go here
-  swapReducer: swapReducer,
-});
-
-// make the combined reducers available for import
-=======
 import renderingReducer from './renderingReducer';
 
 const reducers = combineReducers({
@@ -22,5 +9,4 @@ const reducers = combineReducers({
 })
 
 
->>>>>>> dev
 export default reducers;
