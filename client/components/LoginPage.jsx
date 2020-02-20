@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 const loginPage = props => {
     return (
-        <div className="loginPage">
-            <form class="sign-in" action="/main" method="POST">
+        <div className="loginBox">
+            <div className="loginInputSection">
+            <form className="sign-in" action="/main" method="POST">
                  <h1 id="loginHeader">Welcome to SWAP!</h1>
                     <h2>Please Login</h2>
                 <p>
@@ -24,14 +25,17 @@ const loginPage = props => {
                                                     /> 
                 </p>
         </form>
+        </div>
 
+        <div className="firstTimeSection">                                          
         <p id="first-time">First Time?</p>
 
         <p>
         <button className="signupButton" value="Sign-up!"
                                     onClick={() =>  {props.signupDisplayToggle()}}
                                                     />  
-                                                    </p>                                            
+                                                    </p>         
+            </div>          
         </div>
     )
 };
