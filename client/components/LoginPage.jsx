@@ -8,12 +8,12 @@ const loginPage = props => {
                  <h1 id="loginHeader">Welcome to SWAP!</h1>
                     <h2>Please Login</h2>
                 <p>
-            <label for="login">Username or email</label>
+            <label htmlFor="login">Username or email</label>
             <input type="text" name="username" placeholder="Username or email" />
                 </p>
 
                 <p>
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" name='password' placeholder="Password" />
                 </p>
 
@@ -28,10 +28,10 @@ const loginPage = props => {
         </div>
 
         <div className="firstTimeSection">                                          
-        <p id="first-time">First Time?</p>
+        <p className="first-time">First Time?</p>
 
         <p>
-        <button className="signupButton" value="Sign-up!"
+        <button className="signupButton" value="Sign up"
                                     onClick={() =>  {props.signupDisplayToggle()}}
                                                     />  
                                                     </p>         
