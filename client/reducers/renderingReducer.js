@@ -2,6 +2,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = { 
     loginDisplayTog: true,
+    signupDisplayTog: false,
     swapDisplayTog: false,
     barterDisplayTog: false,
     itemsDisplayTog: false
@@ -19,6 +20,16 @@ const renderingReducer = ( state = initialState, action) => {
             }
         }
 
+        case types.SIGNUP_DISPLAY_TOGGLE: {
+            let {signupDisplayTog} = state;
+            signupDisplayTog = !signupDisplayTog;
+            return {
+                ...state,
+                signupDisplayTog,
+            }
+        }
+
+        
         default: 
             return state;
     }
