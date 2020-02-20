@@ -3,7 +3,7 @@ import * as types from '../actions/actionTypes';
 const initialState = { 
     loginDisplayTog: true,
     signupDisplayTog: false,
-    feedDisplayTog: false,
+    feedDisplayTog: true, 
     barterDisplayTog: false,
     itemsDisplayTog: false
 }

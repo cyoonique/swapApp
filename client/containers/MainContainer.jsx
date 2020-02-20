@@ -12,11 +12,13 @@ const mapStateToProps = state => ({
     //toggles for rendering based off of navBar
     loginDisplayTog: state.rendering.loginDisplayTog,
     signupDisplayTog: state.rendering.signupDisplayTog,
+    feedDisplayTog: state.rendering.feedDisplayTog,
 });
 
 const mapDispatchToProps = dispatch => ({
     loginDisplayToggle: () => dispatch(actions.loginDisplayToggle()),
     signupDisplayToggle: () => dispatch(actions.signupDisplayToggle()),
+    feedDisplayToggle: () => dispatch(actions.feedDisplayToggle()),
 
 });
 
@@ -31,11 +33,17 @@ class MainContainer extends Component {
                         loginDisplayToggle={this.props.loginDisplayToggle}
                         loginDisplayTog={this.props.loginDisplayTog}
                         signupDisplayToggle={this.props.signupDisplayToggle}
+                        feedDisplayToggle={this.props.feedDisplayToggle}
                      />
             )
         }
 
         let swapContainer;
+        if (this.props.feedDisplayTog === true) {
+            swapContainer = (
+                <Feed/>
+            )
+        }
 
         return (
             <main>
