@@ -1,43 +1,50 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
 
-const loginPage = props => {
+class LoginPage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const responseGoogle = response => {
+      const idToken = response.tokenId;
+      axios.get('/validate', {
+        headers: {
+          tokenType: 'Bearer',
+          authorization: idToken
+        }
+      });
+    };
+
     return (
-        <div className="loginBox">
-            <div className="loginInputSection">
-            <form className="sign-in" action="/main" method="POST">
-                 <h1 id="loginHeader">Welcome to SWAP!</h1>
-                    <h2>Please Login</h2>
-                <p>
-            <label for="login">Username or email</label>
-            <input type="text" name="username" placeholder="Username or email" />
-                </p>
+      <div className="loginBox">
 
-                <p>
-            <label for="password">Password</label>
-            <input type="password" name='password' placeholder="Password" />
-                </p>
+        <h1 className="loginWelcome">S W A P</h1>
 
-                <p>
-            <input type="submit" name="submit" value="Log In" onClick={() =>  {
-                                                    console.log(props.loginDisplayTog)
-                                                    props.loginDisplayToggle();
-                                                    }}
-                                                    /> 
-                </p>
-        </form>
-        </div>
+            <div className="loginText1"> 
+                <i> Charter your next barter with eaze </i>
+                </div>
 
-        <div className="firstTimeSection">                                          
-        <p id="first-time">First Time?</p>
+            <div className="loginText2">
+                ↠ Click below to sign in or create an account with Google™ 
+            </div>
 
-        <p>
-        <button className="signupButton" value="Sign-up!"
-                                    onClick={() =>  {props.signupDisplayToggle()}}
-                                                    />  
-                                                    </p>         
-            </div>          
-        </div>
-    )
-};
+        <GoogleLogin
+          className="googleLogin"
+          clientId="382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com"
+          buttonText="Sign in with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          fetchBasicProfile="true"
+        />
 
-export default loginPage;
+      </div>
+    );
+  }
+}
+
+export default LoginPage;
