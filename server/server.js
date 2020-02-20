@@ -12,11 +12,6 @@ const PORT = 3000;
 const cloudinary = require('cloudinary').v2;
 const formData = require('express-form-data');
 
-const { OAuth2Client } = require('google-auth-library');
-const client = new OAuth2Client(
-  '382771863992-hu7olpe3sfiae910a1urf4orija474oj.apps.googleusercontent.com'
-);
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
