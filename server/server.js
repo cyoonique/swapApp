@@ -12,6 +12,11 @@ const userController = require('../controllers/userController');
 const itemController = require('../controllers/itemController');
 const PORT = 3000;
 
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client(
+  '382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com'
+);
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,18 +37,21 @@ app.get('/', (req, res, next) => {
 //   })
 // );
 
-// app.get('/login', (req, res, next) => {
-//   req.session.csrf_string = randomString.generate();
-//   const githubAuthUrl =
-//     'https://github.com/login/oauth/authorize?' +
-//     qs.stringify({
-//       client_id: 'dd3d4118d5914db565a2',
-//       redirect_uri: redirect_uri,
-//       state: req.session.csrf_string,
-//       scope: 'user:email'
-//     });
-//   res.redirect(githubAuthUrl);
-// });
+app.get('/validate', (req, res, next) => {
+  console.log(client);
+  async function verify() {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience:
+        '382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com'
+    });
+    const payload = ticket.getPayload();
+    const userId = payload['sub'];
+  }
+  verify().catch(console.error);
+});
+
+app.post('/validate', (req, res, next) => {});
 
 app.get('*', (req, res) => {
   res.sendStatus(404);

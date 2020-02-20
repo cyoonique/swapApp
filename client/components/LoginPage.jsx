@@ -1,42 +1,66 @@
 import React, { Component } from 'react';
+import {
+  GoogleLogin,
+  GoogleLogout,
+  useGoogleLogin,
+  useGoogleLogout
+} from 'react-google-login';
+import axios from 'axios';
+import { render } from 'react-dom';
+import { ResolvePlugin } from 'webpack';
 
-const loginPage = props => {
+class loginPage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  // onSignIn(googleUser) {
+  //   const profile = googleUser.getBasicProfile();
+  //   profile.getId(), profile.getName(), profile.getEmail();
+  //   return new Promise(resolve => {
+  //     let form = new FormData();
+  //     const idToken = googleUser.getAuthResponse().id_token;
+  //     if (!idToken) {
+  //       throw 'Authentication failed.';
+  //     }
+  //     form.append('id_token', idToken);
+  //     return fetch('/validate', {
+  //       method: 'POST',
+  //       body: form,
+  //       credntials: 'include'
+  //     }).then(resp => {
+  //       if (resp.status === 200) {
+  //         resolve(googleUser);
+  //       } else {
+  //         throw 'Authentication failed.';
+  //       }
+  //     });
+  //   });
+  // }
+
+  render() {
+    const responseGoogle = response => {
+      console.log(response);
+      const idToken = response.id_token;
+      axios.get('/validate', {
+        headers: 'Bearer',
+        idToken: idToken
+      });
+    };
     return (
-        <div className="loginPage">
-            <form class="sign-in">
-                 <h1 id="loginHeader">Welcome to SWAP!</h1>
-                    <h2>Please Login</h2>
-                <p>
-            <label for="login">Username or email</label>
-            <input type="text" name="username" placeholder="Username or email" />
-                </p>
-
-                <p>
-            <label for="password">Password</label>
-            <input type="password" name='password' placeholder="Password" />
-                </p>
-
-                <p>
-            <input type="submit" name="submit" value="Log In" onClick={() =>  {
-                                                    console.log(props.loginDisplayTog)
-                                                    props.loginDisplayToggle();
-                                                    }}
-                                                    /> 
-                </p>
-        </form>
-
-        <p id="first-time">First Time?</p>
-
-        <p>
-        <button className="signupButton" value="Sign-up!"
-                                    // onClick={() =>  {
-                                    //                 console.log(props.loginDisplayTog)
-                                    //                 props.loginDisplayToggle();
-                                    //                 }}
-                                                    />  
-                                                    </p>                                            
-        </div>
-    )
-};
+      <div className="loginPage">
+        <h1 id="loginHeader">Welcome to SWAP!</h1>
+        <GoogleLogin
+          clientId="382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com"
+          buttonText="Sign in with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          fetchBasicProfile="true"
+        />
+      </div>
+    );
+  }
+}
 
 export default loginPage;
