@@ -1,43 +1,36 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
 
-const loginPage = props => {
+class LoginPage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const responseGoogle = response => {
+      const idToken = response.tokenId;
+      axios.get('/validate', {
+        tokenType: 'Bearer',
+        authorization: idToken
+      });
+    };
+
     return (
-        <div className="loginBox">
-            <div className="loginInputSection">
-            <form className="sign-in" action="/main" method="POST">
-                 <h1 id="loginHeader">Welcome to SWAP!</h1>
-                    <h2>Please Login</h2>
-                <p>
-            <label htmlFor="login">Username or email</label>
-            <input type="text" name="username" placeholder="Username or email" />
-                </p>
+      <div className="loginPage">
+        <h1 id="loginHeader">Welcome to SWAP!</h1>
+        <GoogleLogin
+          clientId="382771863992-q5lmlrvur70gcssgknk8mlrr8qk9b64c.apps.googleusercontent.com"
+          buttonText="Sign in with Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          fetchBasicProfile="true"
+        />
+      </div>
+    );
+  }
+}
 
-                <p>
-            <label htmlFor="password">Password</label>
-            <input type="password" name='password' placeholder="Password" />
-                </p>
-
-                <p>
-            <input type="submit" name="submit" value="Log In" onClick={() =>  {
-                                                    console.log(props.loginDisplayTog)
-                                                    props.loginDisplayToggle();
-                                                    }}
-                                                    /> 
-                </p>
-        </form>
-        </div>
-
-        <div className="firstTimeSection">                                          
-        <p className="first-time">First Time?</p>
-
-        <p>
-        <button className="signupButton" value="Sign up"
-                                    onClick={() =>  {props.signupDisplayToggle()}}
-                                                    />  
-                                                    </p>         
-            </div>          
-        </div>
-    )
-};
-
-export default loginPage;
+export default LoginPage;
