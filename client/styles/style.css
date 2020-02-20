@@ -8,7 +8,33 @@
     background-color: lightblue;
 }
 
-.appContainer {
+.NavContainer {
+    box-sizing: border-box;
+    background-color: rgb(114, 53, 164);
+    overflow: auto;
+    padding: 5px 5px;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    color: #FFF;
+    display: inline-block;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 20px 3px 3px 15px;
+}
+.mainContainer {
     /* using flexbox to change boxes from verical to horizontal */
     /* display: flex;
     flex-direction: column; */
